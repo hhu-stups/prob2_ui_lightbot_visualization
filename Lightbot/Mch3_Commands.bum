@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.units.mchBase" org.eventb.texttools.text_lastmodified="1452256954926" org.eventb.texttools.text_representation="machine Mch3_Commands refines Mch2_Layer  sees Levels&#10;&#10;variables bot_x bot_y bot_direction light_state bot_z current_command programs program_stack start index&#10;&#10;invariants&#10;  @current_command current_command ∈ commands ∪  {null}&#10;  @program_stack program_stack ∈ ℕ1 ⇸ procs&#10;  @program_stack_finite card(program_stack) ≤ max_stack_size&#10;  @queues programs ∈ procs → (1‥12 ⇸ commands)&#10;  @start2 start ∈ BOOL&#10;  @index index ∈ procs → 0‥12&#10;&#10;events&#10;  event INITIALISATION extends INITIALISATION&#10;    then&#10;      @act6 current_command ≔ null&#10;      @queues programs ≔  procs×{∅}&#10;      @program_stack program_stack ≔ {1↦main}&#10;      @start start ≔ FALSE&#10;      @index index ≔ procs × {1}&#10;  end&#10;&#10;  event add_command&#10;    any p c&#10;    where&#10;      @start start = FALSE&#10;      @current_command current_command = null&#10;      @p p ∈ procs&#10;      @p2 card(programs(p)) &lt; program_size(p)&#10;      @c c ∈ commands&#10;      @c2 c ∈ {proc1,proc2} ⇒ c ∈ procs&#10;    then&#10;      @main_queue programs ≔  programs  {p ↦ (programs(p) ∪ {card(programs(p))+1 ↦ c})}&#10;  end&#10;&#10;  event start_program&#10;    where&#10;      @start start = FALSE&#10;      @grd current_command = null&#10;      @grd2 programs(main) ≠ ∅&#10;    then&#10;      @act current_command ≔ programs(main)(1)&#10;      @act2 start ≔  TRUE&#10;  end&#10;&#10;  event next_command_in_proc&#10;    any p i&#10;    where&#10;      @start start = TRUE&#10;      @grd current_command = null&#10;      @p p ∈ procs ∧ p ∈ ran(program_stack) ∧ p = program_stack(card(program_stack))&#10;      @i i = index(p)+1 ∧ i ∈ dom(programs(p))&#10;    then&#10;      @act current_command ≔ programs(p)(i)&#10;      @act2 index(p) ≔  index(p) + 1&#10;  end&#10;&#10;  event pop_stack&#10;    any p&#10;    where&#10;      @start start = TRUE&#10;      @grd current_command = null&#10;      @p p ∈ procs ∧ p ∈ ran(program_stack) ∧ p = program_stack(card(program_stack))&#10;      @i index(p) = card(programs(p))&#10;    then&#10;      @act2 program_stack ≔  λx·x ∈ 1‥card(program_stack)−1∣ program_stack(x)&#10;      @act3 index(p) ≔ 1&#10;  end&#10;&#10;  event add_to_stack&#10;    any current_proc next_proc&#10;    where&#10;      @next_proc1 next_proc ∈ procs&#10;      @next_proc2 current_command = next_proc&#10;      @next_proc3 programs(next_proc) ≠ ∅&#10;      @stack_size card(program_stack) &lt; max_stack_size&#10;      @current_proc current_proc ∈ procs ∧ current_proc ∈ ran(program_stack) ∧ current_proc = program_stack(card(program_stack))&#10;    then&#10;      @act2 current_command ≔ null&#10;      @current_proc2 program_stack ≔ program_stack ∪  {card(program_stack)+1↦ next_proc}&#10;      @act3 index(next_proc) ≔ 0&#10;  end&#10;&#10;  event move_right extends move_right&#10;    where&#10;      @grd1 current_command = move&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event skip_move_right&#10;    where&#10;      @grd1 current_command = move&#10;      @grd2 bot_direction = r&#10;      @grd3 bot_x + 1 ↦  bot_y ∉ field&#10;            ∨ bot_z ≠ level(bot_x+1↦bot_y)&#10;    then&#10;      @act1 current_command ≔ null&#10;  end&#10;&#10;  event move_left extends move_left&#10;    where&#10;      @grd1 current_command = move&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event skip_move_left&#10;    where&#10;      @grd1 current_command = move&#10;      @grd2 bot_direction = l&#10;      @grd3 bot_x − 1 ↦  bot_y ∉ field&#10;            ∨ bot_z ≠ level(bot_x−1↦bot_y)&#10;    then&#10;      @act1 current_command ≔ null&#10;  end&#10;&#10;  event move_up extends move_up&#10;    where&#10;      @grd1 current_command = move&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event skip_move_up&#10;    where&#10;      @grd1 current_command = move&#10;      @grd2 bot_direction = u&#10;      @grd3 bot_x ↦  bot_y −1 ∉ field&#10;            ∨ bot_z ≠ level(bot_x↦bot_y−1)&#10;    then&#10;      @act1 current_command ≔ null&#10;  end&#10;&#10;  event move_down extends move_down&#10;    where&#10;      @grd1 current_command = move&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event skip_move_down&#10;    where&#10;      @grd1 current_command = move&#10;      @grd2 bot_direction = d&#10;      @grd3 bot_x ↦  bot_y +1 ∉ field&#10;            ∨ bot_z ≠ level(bot_x↦bot_y+1)&#10;    then&#10;      @act1 current_command ≔ null&#10;  end&#10;&#10;  event turn_right extends turn_right&#10;    where&#10;      @grd1 current_command = turn_right&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event turn_left extends turn_left&#10;    where&#10;      @grd1 current_command = turn_left&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event toggle_light extends toggle_light&#10;    where&#10;      @grd1 current_command = toggle_light&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event skip_toggle_light&#10;    where&#10;      @grd1 current_command = toggle_light&#10;      @grd2 bot_x ↦  bot_y  ∉ dom(light_state)&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event jump_right extends jump_right&#10;    where&#10;      @grd1 current_command = jump&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event skip_jump_right&#10;    where&#10;      @grd1 current_command = jump&#10;      @grd2 bot_direction = r&#10;      @grd3 bot_x + 1 ↦  bot_y ∉ field&#10;            ∨ level(bot_x+1↦bot_y) ∉ 1‥bot_z−1  ∪ {bot_z + 1}&#10;    then&#10;      @act1 current_command ≔ null&#10;  end&#10;&#10;  event jump_left extends jump_left&#10;    where&#10;      @grd1 current_command = jump&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event skip_jump_left&#10;    where&#10;      @grd1 current_command = jump&#10;      @grd2 bot_direction = l&#10;      @grd3 bot_x + −1 ↦  bot_y ∉ field&#10;            ∨ level(bot_x−1↦bot_y) ∉ 1‥bot_z−1  ∪ {bot_z + 1}&#10;    then&#10;      @act1 current_command ≔ null&#10;  end&#10;&#10;  event jump_up extends jump_up&#10;    where&#10;      @grd1 current_command = jump&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event skip_jump_up&#10;    where&#10;      @grd1 current_command = jump&#10;      @grd2 bot_direction = u&#10;      @grd3 bot_x ↦ bot_y −1 ∉ field&#10;            ∨ level(bot_x↦bot_y−1) ∉ 1‥bot_z−1  ∪ {bot_z + 1}&#10;    then&#10;      @act1 current_command ≔ null&#10;  end&#10;&#10;  event jump_down extends jump_down&#10;    where&#10;      @grd1 current_command = jump&#10;    then&#10;      @act2 current_command ≔ null&#10;  end&#10;&#10;  event skip_jump_down&#10;    where&#10;      @grd1 current_command = jump&#10;      @grd2 bot_direction = d&#10;      @grd3 bot_x ↦ bot_y +1 ∉ field&#10;            ∨ level(bot_x↦bot_y+1) ∉ 1‥bot_z−1  ∪ {bot_z + 1}&#10;    then&#10;      @act1 current_command ≔ null&#10;  end&#10;end&#10;" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="Mch2_Layer"/>
+<org.eventb.core.seesContext name="_1sUKYJ1mEeSnU8TIoxEcvA" org.eventb.core.target="Levels"/>
+<org.eventb.core.variable name="_GOKDwJpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_x"/>
+<org.eventb.core.variable name="_GOKq0JpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_y"/>
+<org.eventb.core.variable name="_GOKq0ZpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_direction"/>
+<org.eventb.core.variable name="_GOKq0ppAEeS_6Ljkn4LD7g" org.eventb.core.identifier="light_state"/>
+<org.eventb.core.variable name="_3cDr8JpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_z"/>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7h" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_lmVt8JpIEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act6"/>
+<org.eventb.core.action name="_8C2FUJpKEeS_6Ljkn4LD7g" org.eventb.core.assignment="programs ≔  procs×{∅}" org.eventb.core.label="queues"/>
+<org.eventb.core.action name="_R1eZQJpNEeS_6Ljkn4LD7g" org.eventb.core.assignment="program_stack ≔ {1↦main}" org.eventb.core.label="program_stack"/>
+<org.eventb.core.action name="_hufLQJpLEeS_6Ljkn4LD7g" org.eventb.core.assignment="start ≔ FALSE" org.eventb.core.label="start"/>
+<org.eventb.core.action name="_Ma8_YJpPEeS_6Ljkn4LD7g" org.eventb.core.assignment="index ≔ procs × {1}" org.eventb.core.label="index"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_mTg1oJpLEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="add_command">
+<org.eventb.core.parameter name="_mThcsJpLEeS_6Ljkn4LD7g" org.eventb.core.identifier="p"/>
+<org.eventb.core.parameter name="_mThcsZpLEeS_6Ljkn4LD7g" org.eventb.core.identifier="c"/>
+<org.eventb.core.guard name="_mThcsppLEeS_6Ljkn4LD7g" org.eventb.core.label="start" org.eventb.core.predicate="start = FALSE"/>
+<org.eventb.core.guard name="_mThcs5pLEeS_6Ljkn4LD7g" org.eventb.core.label="current_command" org.eventb.core.predicate="current_command = null"/>
+<org.eventb.core.guard name="_0YNfcJpLEeS_6Ljkn4LD7g" org.eventb.core.label="p" org.eventb.core.predicate="p ∈ procs"/>
+<org.eventb.core.guard name="_0YNfcZpLEeS_6Ljkn4LD7g" org.eventb.core.label="p2" org.eventb.core.predicate="card(programs(p)) &lt; program_size(p)"/>
+<org.eventb.core.guard name="_mThctZpLEeS_6Ljkn4LD7g" org.eventb.core.label="c" org.eventb.core.predicate="c ∈ commands"/>
+<org.eventb.core.guard name="_2r8e0JpaEeS_6Ljkn4LD7g" org.eventb.core.label="c2" org.eventb.core.predicate="c ∈ {proc1,proc2} ⇒ c ∈ procs"/>
+<org.eventb.core.action name="_mTiDwJpLEeS_6Ljkn4LD7g" org.eventb.core.assignment="programs ≔  programs  {p ↦ (programs(p) ∪ {card(programs(p))+1 ↦ c})}" org.eventb.core.label="main_queue"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_rAAkgJpMEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="start_program">
+<org.eventb.core.guard name="_rABLkJpMEeS_6Ljkn4LD7g" org.eventb.core.label="start" org.eventb.core.predicate="start = FALSE"/>
+<org.eventb.core.guard name="_rABLkZpMEeS_6Ljkn4LD7g" org.eventb.core.label="grd" org.eventb.core.predicate="current_command = null"/>
+<org.eventb.core.guard name="_rABLkppMEeS_6Ljkn4LD7g" org.eventb.core.label="grd2" org.eventb.core.predicate="programs(main) ≠ ∅"/>
+<org.eventb.core.action name="_rABLk5pMEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ programs(main)(1)" org.eventb.core.label="act"/>
+<org.eventb.core.action name="_rABLlJpMEeS_6Ljkn4LD7g" org.eventb.core.assignment="start ≔  TRUE" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_jMcFEJpNEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="next_command_in_proc">
+<org.eventb.core.parameter name="_s_nPUJpNEeS_6Ljkn4LD7g" org.eventb.core.identifier="p"/>
+<org.eventb.core.parameter name="_9w_h0JpNEeS_6Ljkn4LD7g" org.eventb.core.identifier="i"/>
+<org.eventb.core.guard name="_jMcFEZpNEeS_6Ljkn4LD7g" org.eventb.core.label="start" org.eventb.core.predicate="start = TRUE"/>
+<org.eventb.core.guard name="_jMcFEppNEeS_6Ljkn4LD7g" org.eventb.core.label="grd" org.eventb.core.predicate="current_command = null"/>
+<org.eventb.core.guard name="_s_nPUZpNEeS_6Ljkn4LD7g" org.eventb.core.label="p" org.eventb.core.predicate="p ∈ procs ∧ p ∈ ran(program_stack) ∧ p = program_stack(card(program_stack))"/>
+<org.eventb.core.guard name="_9w_h0ZpNEeS_6Ljkn4LD7g" org.eventb.core.label="i" org.eventb.core.predicate="i = index(p)+1 ∧ i ∈ dom(programs(p))"/>
+<org.eventb.core.action name="_jMcsIJpNEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ programs(p)(i)" org.eventb.core.label="act"/>
+<org.eventb.core.action name="_OgmSsJpOEeS_6Ljkn4LD7g" org.eventb.core.assignment="index(p) ≔  index(p) + 1" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_gcKgYJpOEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="pop_stack">
+<org.eventb.core.parameter name="_gcLugJpOEeS_6Ljkn4LD7g" org.eventb.core.identifier="p"/>
+<org.eventb.core.guard name="_gcLugZpOEeS_6Ljkn4LD7g" org.eventb.core.label="start" org.eventb.core.predicate="start = TRUE"/>
+<org.eventb.core.guard name="_gcMVkJpOEeS_6Ljkn4LD7g" org.eventb.core.label="grd" org.eventb.core.predicate="current_command = null"/>
+<org.eventb.core.guard name="_gcMVkZpOEeS_6Ljkn4LD7g" org.eventb.core.label="p" org.eventb.core.predicate="p ∈ procs ∧ p ∈ ran(program_stack) ∧ p = program_stack(card(program_stack))"/>
+<org.eventb.core.guard name="_gcM8oJpOEeS_6Ljkn4LD7g" org.eventb.core.label="i" org.eventb.core.predicate="index(p) = card(programs(p))"/>
+<org.eventb.core.action name="_gcM8oppOEeS_6Ljkn4LD7g" org.eventb.core.assignment="program_stack ≔  λx·x ∈ 1‥card(program_stack)−1∣ program_stack(x)" org.eventb.core.label="act2"/>
+<org.eventb.core.action name="_cBLGUJpPEeS_6Ljkn4LD7g" org.eventb.core.assignment="index(p) ≔ 1" org.eventb.core.label="act3"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_b8QUoJpQEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="add_to_stack">
+<org.eventb.core.parameter name="_b8Q7sJpQEeS_6Ljkn4LD7g" org.eventb.core.identifier="current_proc"/>
+<org.eventb.core.parameter name="_b8Q7sZpQEeS_6Ljkn4LD7g" org.eventb.core.identifier="next_proc"/>
+<org.eventb.core.guard name="_b8Q7sppQEeS_6Ljkn4LD7g" org.eventb.core.label="next_proc1" org.eventb.core.predicate="next_proc ∈ procs"/>
+<org.eventb.core.guard name="_2FKoIJpZEeS_6Ljkn4LD7g" org.eventb.core.label="next_proc2" org.eventb.core.predicate="current_command = next_proc"/>
+<org.eventb.core.guard name="_2FKoIZpZEeS_6Ljkn4LD7g" org.eventb.core.label="next_proc3" org.eventb.core.predicate="programs(next_proc) ≠ ∅"/>
+<org.eventb.core.guard name="_uIB6wJ2AEeSnU8TIoxEcvA" org.eventb.core.label="stack_size" org.eventb.core.predicate="card(program_stack) &lt; max_stack_size"/>
+<org.eventb.core.guard name="_b8Q7s5pQEeS_6Ljkn4LD7g" org.eventb.core.label="current_proc" org.eventb.core.predicate="current_proc ∈ procs ∧ current_proc ∈ ran(program_stack) ∧ current_proc = program_stack(card(program_stack))"/>
+<org.eventb.core.action name="_bYPyMJpcEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+<org.eventb.core.action name="_b8RiwJpQEeS_6Ljkn4LD7g" org.eventb.core.assignment="program_stack ≔ program_stack ∪  {card(program_stack)+1↦ next_proc}" org.eventb.core.label="current_proc2"/>
+<org.eventb.core.action name="_j6vOIJpQEeS_6Ljkn4LD7g" org.eventb.core.assignment="index(next_proc) ≔ 0" org.eventb.core.label="act3"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7i" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="move_right">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="move_right"/>
+<org.eventb.core.guard name="_2OdvEJpOEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = move"/>
+<org.eventb.core.action name="_2OdvEZpOEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_kn730J1wEeSnU8TIoxEcvA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="skip_move_right">
+<org.eventb.core.guard name="_kn8e4J1wEeSnU8TIoxEcvA" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = move"/>
+<org.eventb.core.guard name="_RVrHgJ1xEeSnU8TIoxEcvA" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_direction = right_direction"/>
+<org.eventb.core.guard name="_RVrHgZ1xEeSnU8TIoxEcvA" org.eventb.core.label="grd3" org.eventb.core.predicate="bot_x + 1 ↦  bot_y ∉ field&#10;            ∨ bot_z ≠ level(bot_x+1↦bot_y)"/>
+<org.eventb.core.action name="_kn8e4Z1wEeSnU8TIoxEcvA" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7j" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="move_left">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="move_left"/>
+<org.eventb.core.guard name="_5a85MJpOEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = move"/>
+<org.eventb.core.action name="_5a9gQJpOEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_fwQhwJ1xEeSnU8TIoxEcvA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="skip_move_left">
+<org.eventb.core.guard name="_fwRI0J1xEeSnU8TIoxEcvA" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = move"/>
+<org.eventb.core.guard name="_fwRI0Z1xEeSnU8TIoxEcvA" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_direction = left_direction"/>
+<org.eventb.core.guard name="_fwRI0p1xEeSnU8TIoxEcvA" org.eventb.core.label="grd3" org.eventb.core.predicate="bot_x − 1 ↦  bot_y ∉ field&#10;            ∨ bot_z ≠ level(bot_x−1↦bot_y)"/>
+<org.eventb.core.action name="_fwRI051xEeSnU8TIoxEcvA" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7k" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="move_up">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="move_up"/>
+<org.eventb.core.guard name="_5a-HUJpOEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = move"/>
+<org.eventb.core.action name="_5a-HUZpOEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_CB_FkJ1yEeSnU8TIoxEcvA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="skip_move_up">
+<org.eventb.core.guard name="_CB_soJ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = move"/>
+<org.eventb.core.guard name="_CB_soZ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_direction = up_direction"/>
+<org.eventb.core.guard name="_CCATsJ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd3" org.eventb.core.predicate="bot_x ↦  bot_y −1 ∉ field&#10;            ∨ bot_z ≠ level(bot_x↦bot_y−1)"/>
+<org.eventb.core.action name="_CCATsZ1yEeSnU8TIoxEcvA" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7l" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="move_down">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="move_down"/>
+<org.eventb.core.guard name="_5a-uYJpOEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = move"/>
+<org.eventb.core.action name="_5a-uYZpOEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_CCATsp1yEeSnU8TIoxEcvA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="skip_move_down">
+<org.eventb.core.guard name="_CCA6wJ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = move"/>
+<org.eventb.core.guard name="_CCA6wZ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_direction = down_direction"/>
+<org.eventb.core.guard name="_CCA6wp1yEeSnU8TIoxEcvA" org.eventb.core.label="grd3" org.eventb.core.predicate="bot_x ↦  bot_y +1 ∉ field&#10;            ∨ bot_z ≠ level(bot_x↦bot_y+1)"/>
+<org.eventb.core.action name="_CCBh0J1yEeSnU8TIoxEcvA" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7m" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="turn_right">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="turn_right"/>
+<org.eventb.core.guard name="_-IltAJpOEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = turn_right"/>
+<org.eventb.core.action name="_-ImUEJpOEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7n" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="turn_left">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="turn_left"/>
+<org.eventb.core.guard name="_-Im7IJpOEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = turn_left"/>
+<org.eventb.core.action name="_-IniMJpOEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7o" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="toggle_light">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="toggle_light"/>
+<org.eventb.core.guard name="_IKFnIJpPEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = toggle_light"/>
+<org.eventb.core.action name="_IKFnIZpPEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_7SstoJ1yEeSnU8TIoxEcvA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="skip_toggle_light">
+<org.eventb.core.guard name="_7StUsJ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = toggle_light"/>
+<org.eventb.core.guard name="_7St7wJ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_x ↦  bot_y  ∉ dom(light_state)"/>
+<org.eventb.core.action name="_7St7wZ1yEeSnU8TIoxEcvA" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7p" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="jump_right">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="jump_right"/>
+<org.eventb.core.guard name="_iOIX0JpPEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = jump"/>
+<org.eventb.core.action name="_iOI-4JpPEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_CCBh0Z1yEeSnU8TIoxEcvA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="skip_jump_right">
+<org.eventb.core.guard name="_CCBh0p1yEeSnU8TIoxEcvA" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = jump"/>
+<org.eventb.core.guard name="_CCBh051yEeSnU8TIoxEcvA" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_direction = right_direction"/>
+<org.eventb.core.guard name="_CCBh1J1yEeSnU8TIoxEcvA" org.eventb.core.label="grd3" org.eventb.core.predicate="bot_x + 1 ↦  bot_y ∉ field&#10;            ∨ level(bot_x+1↦bot_y) ∉ 1‥bot_z−1  ∪ {bot_z + 1}"/>
+<org.eventb.core.action name="_CCCI4J1yEeSnU8TIoxEcvA" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7q" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="jump_left">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="jump_left"/>
+<org.eventb.core.guard name="_o6DdQJpPEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = jump"/>
+<org.eventb.core.action name="_o6DdQZpPEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_QEA14J1yEeSnU8TIoxEcvA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="skip_jump_left">
+<org.eventb.core.guard name="_QEBc8J1yEeSnU8TIoxEcvA" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = jump"/>
+<org.eventb.core.guard name="_QEBc8Z1yEeSnU8TIoxEcvA" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_direction = left_direction"/>
+<org.eventb.core.guard name="_QEBc8p1yEeSnU8TIoxEcvA" org.eventb.core.label="grd3" org.eventb.core.predicate="bot_x + −1 ↦  bot_y ∉ field&#10;            ∨ level(bot_x−1↦bot_y) ∉ 1‥bot_z−1  ∪ {bot_z + 1}"/>
+<org.eventb.core.action name="_QEBc851yEeSnU8TIoxEcvA" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7r" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="jump_up">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="jump_up"/>
+<org.eventb.core.guard name="_o6EEUJpPEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = jump"/>
+<org.eventb.core.action name="_o6EEUZpPEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_QEBc9J1yEeSnU8TIoxEcvA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="skip_jump_up">
+<org.eventb.core.guard name="_QECEAJ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = jump"/>
+<org.eventb.core.guard name="_QECEAZ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_direction = up_direction"/>
+<org.eventb.core.guard name="_QECEAp1yEeSnU8TIoxEcvA" org.eventb.core.label="grd3" org.eventb.core.predicate="bot_x ↦ bot_y −1 ∉ field&#10;            ∨ level(bot_x↦bot_y−1) ∉ 1‥bot_z−1  ∪ {bot_z + 1}"/>
+<org.eventb.core.action name="_QECEA51yEeSnU8TIoxEcvA" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_XRAj8JpEEeS_6Ljkn4LD7s" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="jump_down">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="jump_down"/>
+<org.eventb.core.guard name="_o6ErYJpPEeS_6Ljkn4LD7g" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = jump"/>
+<org.eventb.core.action name="_o6ErYZpPEeS_6Ljkn4LD7g" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_d2l0AJpIEeS_6Ljkn4LD7g" org.eventb.core.identifier="current_command"/>
+<org.eventb.core.invariant name="_d2l0AZpIEeS_6Ljkn4LD7g" org.eventb.core.label="current_command" org.eventb.core.predicate="current_command ∈ commands ∪  {null}"/>
+<org.eventb.core.invariant name="_XNc1cJpLEeS_6Ljkn4LD7g" org.eventb.core.label="program_stack" org.eventb.core.predicate="program_stack ∈ ℕ1 ⇸ procs"/>
+<org.eventb.core.invariant name="_W-i2sJ2AEeSnU8TIoxEcvA" org.eventb.core.label="program_stack_finite" org.eventb.core.predicate="card(program_stack) ≤ max_stack_size"/>
+<org.eventb.core.invariant name="_kHVj4JpJEeS_6Ljkn4LD7g" org.eventb.core.label="queues" org.eventb.core.predicate="programs ∈ procs → (1‥12 ⇸ commands)"/>
+<org.eventb.core.variable name="_TNBs8JpLEeS_6Ljkn4LD7g" org.eventb.core.identifier="programs"/>
+<org.eventb.core.variable name="_YJSLkJpLEeS_6Ljkn4LD7g" org.eventb.core.identifier="program_stack"/>
+<org.eventb.core.variable name="_gU47EJpLEeS_6Ljkn4LD7g" org.eventb.core.identifier="start"/>
+<org.eventb.core.invariant name="_gU5iIJpLEeS_6Ljkn4LD7g" org.eventb.core.label="start2" org.eventb.core.predicate="start ∈ BOOL"/>
+<org.eventb.core.variable name="_y-do0JpMEeS_6Ljkn4LD7g" org.eventb.core.identifier="index"/>
+<org.eventb.core.invariant name="_y-do0ZpMEeS_6Ljkn4LD7g" org.eventb.core.label="index" org.eventb.core.predicate="index ∈ procs → 0‥12"/>
+<org.eventb.core.event name="_QECEBJ1yEeSnU8TIoxEcvA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="skip_jump_down">
+<org.eventb.core.guard name="_QECrEJ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd1" org.eventb.core.predicate="current_command = jump"/>
+<org.eventb.core.guard name="_QECrEZ1yEeSnU8TIoxEcvA" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_direction = down_direction"/>
+<org.eventb.core.guard name="_QECrEp1yEeSnU8TIoxEcvA" org.eventb.core.label="grd3" org.eventb.core.predicate="bot_x ↦ bot_y +1 ∉ field&#10;            ∨ level(bot_x↦bot_y+1) ∉ 1‥bot_z−1  ∪ {bot_z + 1}"/>
+<org.eventb.core.action name="_QECrE51yEeSnU8TIoxEcvA" org.eventb.core.assignment="current_command ≔ null" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

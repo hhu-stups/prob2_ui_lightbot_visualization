@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.units.mchBase" org.eventb.texttools.text_lastmodified="1452256872237" org.eventb.texttools.text_representation="machine Mch1_Movement sees Ctx1_Field&#10;&#10;variables bot_x bot_y bot_direction light_state&#10;&#10;invariants&#10;  @inv bot_x ∈ dom(field)&#10;  @inv2 bot_y ∈ ran(field)&#10;  @invariant bot_x ↦  bot_y ∈ field&#10;  @inv3 bot_direction ∈ directions&#10;  @inv4 light_state ∈ lights →  BOOL&#10;  @goal ¬(ran(light_state) = {TRUE})&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @act bot_x ≔ start_x&#10;      @act2 bot_y ≔  start_y&#10;      @act3 bot_direction ≔ start_direction&#10;      @act4 light_state ≔ lights × {FALSE}&#10;  end&#10;&#10;  event move_right&#10;    where&#10;      @grd2 bot_direction = r&#10;      @grd3 bot_x + 1 ↦  bot_y ∈ field&#10;    then&#10;      @act1 bot_x ≔ bot_x + 1&#10;  end&#10;&#10;  event move_left&#10;    where&#10;      @grd bot_direction = l&#10;      @grd2 bot_x − 1 ↦  bot_y ∈ field&#10;    then&#10;      @act1 bot_x ≔ bot_x − 1&#10;  end&#10;&#10;  event move_up&#10;    where&#10;      @grd bot_direction = u&#10;      @grd2 bot_x ↦  bot_y − 1  ∈ field&#10;    then&#10;      @act1 bot_y ≔ bot_y − 1&#10;  end&#10;&#10;  event move_down&#10;    where&#10;      @grd bot_direction = d&#10;      @grd2 bot_x ↦  bot_y + 1  ∈ field&#10;    then&#10;      @act1 bot_y ≔ bot_y + 1&#10;  end&#10;&#10;  event turn_right&#10;    then&#10;      @act bot_direction ≔ turn_r(bot_direction)&#10;  end&#10;&#10;  event turn_left&#10;    then&#10;      @act bot_direction ≔ turn_r∼(bot_direction)&#10;  end&#10;&#10;  event toggle_light&#10;    where&#10;      @light bot_x ↦  bot_y  ∈ dom(light_state)&#10;    then&#10;      @act1 light_state(bot_x↦bot_y) ≔ bool(light_state(bot_x↦bot_y) = FALSE)&#10;  end&#10;end&#10;" version="5">
+<org.eventb.core.seesContext name="_GOJcsZpAEeS_6Ljkn4LD7g" org.eventb.core.target="Ctx1_Field"/>
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_WbaVgJpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_x ≔ start_x" org.eventb.core.label="act"/>
+<org.eventb.core.action name="_WbaVgZpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_y ≔  start_y" org.eventb.core.label="act2"/>
+<org.eventb.core.action name="_Wba8kJpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_direction ≔ start_direction" org.eventb.core.label="act3"/>
+<org.eventb.core.action name="_Wba8kZpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="light_state ≔ lights × {FALSE}" org.eventb.core.label="act4"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_GOKDwJpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_x"/>
+<org.eventb.core.variable name="_GOKq0JpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_y"/>
+<org.eventb.core.variable name="_GOKq0ZpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_direction"/>
+<org.eventb.core.variable name="_GOKq0ppAEeS_6Ljkn4LD7g" org.eventb.core.identifier="light_state"/>
+<org.eventb.core.invariant name="_GOLR4JpAEeS_6Ljkn4LD7g" org.eventb.core.label="inv" org.eventb.core.predicate="bot_x ∈ dom(field)"/>
+<org.eventb.core.invariant name="_GOL48JpAEeS_6Ljkn4LD7g" org.eventb.core.label="inv2" org.eventb.core.predicate="bot_y ∈ ran(field)"/>
+<org.eventb.core.invariant name="_GOL48ZpAEeS_6Ljkn4LD7g" org.eventb.core.label="invariant" org.eventb.core.predicate="bot_x ↦  bot_y ∈ field"/>
+<org.eventb.core.invariant name="_GOMgAJpAEeS_6Ljkn4LD7g" org.eventb.core.label="inv3" org.eventb.core.predicate="bot_direction ∈ directions"/>
+<org.eventb.core.invariant name="_GOMgAZpAEeS_6Ljkn4LD7g" org.eventb.core.label="inv4" org.eventb.core.predicate="light_state ∈ lights →  BOOL"/>
+<org.eventb.core.event name="_WbcxwJpAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="move_right">
+<org.eventb.core.guard name="_WbdY0JpAEeS_6Ljkn4LD7g" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_direction = right_direction"/>
+<org.eventb.core.guard name="_WbdY0ZpAEeS_6Ljkn4LD7g" org.eventb.core.label="grd3" org.eventb.core.predicate="bot_x + 1 ↦  bot_y ∈ field"/>
+<org.eventb.core.action name="_Wbd_4JpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_x ≔ bot_x + 1" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_Wbd_4ZpAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="move_left">
+<org.eventb.core.guard name="_Wbd_4ppAEeS_6Ljkn4LD7g" org.eventb.core.label="grd" org.eventb.core.predicate="bot_direction = left_direction"/>
+<org.eventb.core.guard name="_Wbem8JpAEeS_6Ljkn4LD7g" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_x − 1 ↦  bot_y ∈ field"/>
+<org.eventb.core.action name="_Wbem8ZpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_x ≔ bot_x − 1" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_WbfOAJpAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="move_up">
+<org.eventb.core.guard name="_WbfOAZpAEeS_6Ljkn4LD7g" org.eventb.core.label="grd" org.eventb.core.predicate="bot_direction = up_direction"/>
+<org.eventb.core.guard name="_Wbf1EJpAEeS_6Ljkn4LD7g" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_x ↦  bot_y − 1  ∈ field"/>
+<org.eventb.core.action name="_Wbf1EZpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_y ≔ bot_y − 1" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_Wbf1EppAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="move_down">
+<org.eventb.core.guard name="_WbgcIJpAEeS_6Ljkn4LD7g" org.eventb.core.label="grd" org.eventb.core.predicate="bot_direction = down_direction"/>
+<org.eventb.core.guard name="_WbgcIZpAEeS_6Ljkn4LD7g" org.eventb.core.label="grd2" org.eventb.core.predicate="bot_x ↦  bot_y + 1  ∈ field"/>
+<org.eventb.core.action name="_WbgcIppAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_y ≔ bot_y + 1" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_WbhDMJpAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="turn_right">
+<org.eventb.core.action name="_WbhDMZpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_direction ≔ turn_r(bot_direction)" org.eventb.core.label="act"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_WbhDMppAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="turn_left">
+<org.eventb.core.action name="_WbhqQJpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_direction ≔ turn_r∼(bot_direction)" org.eventb.core.label="act"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_WbhqQZpAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="toggle_light">
+<org.eventb.core.guard name="_WbiRUJpAEeS_6Ljkn4LD7g" org.eventb.core.label="light" org.eventb.core.predicate="bot_x ↦  bot_y  ∈ dom(light_state)"/>
+<org.eventb.core.action name="_WbiRUZpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="light_state(bot_x↦bot_y) ≔ bool(light_state(bot_x↦bot_y) = FALSE)" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="_gcVjsJpHEeS_6Ljkn4LD7g" org.eventb.core.label="goal" org.eventb.core.predicate="¬(ran(light_state) = {TRUE})"/>
+</org.eventb.core.machineFile>

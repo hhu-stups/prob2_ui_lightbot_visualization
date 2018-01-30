@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+<org.eventb.core.prProof name="INITIALISATION/z/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15" org.eventb.core.prSets="directions">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(directions,{up},{left},{right},{down}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p16,p17,p18,p19,p20,p21,p22"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prHypAction name="SELECT2" org.eventb.core.prHyps="p16,p17,p18,p19,p20,p21,p22"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p9,p8,p2,p11,p3,p7,p4,p5,p12,p6,p14,p13,p15,p16,p17,p18,p19,p20,p21,p22">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="down" org.eventb.core.type="directions"/>
+<org.eventb.core.prIdent name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="left" org.eventb.core.type="directions"/>
+<org.eventb.core.prIdent name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="lights" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="main_queue_l" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="right" org.eventb.core.type="directions"/>
+<org.eventb.core.prIdent name="start_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="start_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="start_z" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="turn_r" org.eventb.core.type="ℙ(directions×directions)"/>
+<org.eventb.core.prIdent name="up" org.eventb.core.type="directions"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="lights⊆field"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="¬up=down"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="start_z∈1 ‥ 4"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="start_x∈dom(field)"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="¬left=right"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="start_x ↦ start_y∈field"/>
+<org.eventb.core.prPred name="p21" org.eventb.core.predicate="¬left=down"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="turn_r={up ↦ right,right ↦ down,down ↦ left,left ↦ up}"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="field⊆1 ‥ 10 × 1 ‥ 10"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="start_x ↦ start_y∈dom(level)"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="level∈field → 1 ‥ 4"/>
+<org.eventb.core.prPred name="p22" org.eventb.core.predicate="¬right=down"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="start_z∈ran(level)"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="partition(directions,{up},{left},{right},{down})"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="directions={up,left,right,down}"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="start_z=level(start_x ↦ start_y)"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="main_queue_l=12"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="start_y∈ran(field)"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="main_queue_l∈ℕ1"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="turn_r∈directions ⤖ directions"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="¬up=left"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="¬up=right"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="jump_right/z/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prIdent name="z" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="z∈1 ‥ 4"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="jump_right/z3/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p2">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p2" org.eventb.core.prHyps="p2"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="bot_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="bot_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="bot_x+1 ↦ bot_y∈dom(level)∧level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="bot_x+1 ↦ bot_y∈dom(level)"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="bot_x+1 ↦ bot_y∈field"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="bot_x+1 ↦ bot_y∈dom(level)∧⊤"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="level∈field → 1 ‥ 4"/>
+<org.eventb.core.prExpr name="e0" org.eventb.core.expression="field"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL3:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="jump_left/z3/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p2">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p2" org.eventb.core.prHyps="p2"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="bot_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="bot_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="bot_x − 1 ↦ bot_y∈dom(level)∧⊤"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="bot_x − 1 ↦ bot_y∈dom(level)∧level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="bot_x − 1 ↦ bot_y∈field"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="bot_x − 1 ↦ bot_y∈dom(level)"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="level∈field → 1 ‥ 4"/>
+<org.eventb.core.prExpr name="e0" org.eventb.core.expression="field"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL3:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="jump_left/z/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prIdent name="z" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="z∈1 ‥ 4"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="jump_up/z3/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p2">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p2" org.eventb.core.prHyps="p2"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="bot_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="bot_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="bot_x ↦ bot_y − 1∈dom(level)∧level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="bot_x ↦ bot_y − 1∈dom(level)∧⊤"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="bot_x ↦ bot_y − 1∈dom(level)"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="bot_x ↦ bot_y − 1∈field"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="level∈field → 1 ‥ 4"/>
+<org.eventb.core.prExpr name="e0" org.eventb.core.expression="field"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL3:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="jump_up/z/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prIdent name="z" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="z∈1 ‥ 4"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="jump_down/z3/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p1" org.eventb.core.prHyps="p1"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="bot_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="bot_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="bot_x ↦ bot_y+1∈field"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="bot_x ↦ bot_y+1∈dom(level)"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="bot_x ↦ bot_y+1∈dom(level)∧level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="bot_x ↦ bot_y+1∈dom(level)∧⊤"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="level∈field → 1 ‥ 4"/>
+<org.eventb.core.prExpr name="e0" org.eventb.core.expression="field"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL3:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="jump_down/z/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prIdent name="z" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="z∈1 ‥ 4"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="move_right/z/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p2">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p2" org.eventb.core.prHyps="p2"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="bot_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="bot_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="bot_x+1 ↦ bot_y∈dom(level)∧level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="bot_x+1 ↦ bot_y∈dom(level)"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="bot_x+1 ↦ bot_y∈field"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="bot_x+1 ↦ bot_y∈dom(level)∧⊤"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="level∈field → 1 ‥ 4"/>
+<org.eventb.core.prExpr name="e0" org.eventb.core.expression="field"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL3:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="move_left/z/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p2">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p2" org.eventb.core.prHyps="p2"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="bot_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="bot_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="bot_x − 1 ↦ bot_y∈dom(level)∧⊤"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="bot_x − 1 ↦ bot_y∈dom(level)∧level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="bot_x − 1 ↦ bot_y∈field"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="bot_x − 1 ↦ bot_y∈dom(level)"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="level∈field → 1 ‥ 4"/>
+<org.eventb.core.prExpr name="e0" org.eventb.core.expression="field"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL3:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="move_up/z/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p2">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p2" org.eventb.core.prHyps="p2"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="bot_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="bot_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="bot_x ↦ bot_y − 1∈dom(level)∧level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="bot_x ↦ bot_y − 1∈dom(level)∧⊤"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="bot_x ↦ bot_y − 1∈dom(level)"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="bot_x ↦ bot_y − 1∈field"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="level∈field → 1 ‥ 4"/>
+<org.eventb.core.prExpr name="e0" org.eventb.core.expression="field"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL3:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="move_down/z/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p1" org.eventb.core.prHyps="p1"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="bot_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="bot_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="bot_x ↦ bot_y+1∈field"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="bot_x ↦ bot_y+1∈dom(level)"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="bot_x ↦ bot_y+1∈dom(level)∧level∈ℤ × ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="bot_x ↦ bot_y+1∈dom(level)∧⊤"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="level∈field → 1 ‥ 4"/>
+<org.eventb.core.prExpr name="e0" org.eventb.core.expression="field"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL3:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="move_up/grd/GRD"/>
+<org.eventb.core.prProof name="jump_up/grd/GRD"/>
+</org.eventb.core.prFile>

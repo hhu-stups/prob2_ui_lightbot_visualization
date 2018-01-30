@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.units.mchBase" org.eventb.texttools.text_lastmodified="1421410346546" org.eventb.texttools.text_representation="machine Mch2_Layer refines Mch1_Movement  sees Ctx2_Layer&#10;&#10;variables bot_x bot_y bot_direction light_state bot_z&#10;&#10;invariants&#10;  @z bot_z ∈ 1‥4&#10;&#10;events&#10;  event INITIALISATION extends INITIALISATION&#10;    then&#10;      @z bot_z ≔ start_z&#10;  end&#10;&#10;  event move_right extends move_right&#10;    where&#10;      @z bot_z = level(bot_x+1↦bot_y)&#10;  end&#10;&#10;  event move_left extends move_left&#10;    where&#10;      @z bot_z = level(bot_x−1↦bot_y)&#10;  end&#10;&#10;  event move_up extends move_up&#10;    where&#10;      @z bot_z = level(bot_x↦bot_y−1)&#10;  end&#10;&#10;  event move_down extends move_down&#10;    where&#10;      @z bot_z = level(bot_x↦bot_y+1)&#10;  end&#10;&#10;  event turn_right extends turn_right&#10;  end&#10;&#10;  event turn_left extends turn_left&#10;  end&#10;&#10;  event toggle_light extends toggle_light&#10;  end&#10;&#10;  event jump_right extends move_right&#10;    any z&#10;    where&#10;      @z z ∈ 1‥4&#10;      @z2 z &lt; bot_z ∨ z = bot_z + 1&#10;      @z3 z = level(bot_x+1↦bot_y)&#10;    then&#10;      @act_z bot_z ≔  z&#10;  end&#10;&#10;  event jump_left extends move_left&#10;    any z&#10;    where&#10;      @z z ∈ 1‥4&#10;      @z2 z &lt; bot_z ∨ z = bot_z + 1&#10;      @z3 z = level(bot_x−1↦bot_y)&#10;    then&#10;      @act_z bot_z ≔  z&#10;  end&#10;&#10;  event jump_up extends move_up&#10;    any z&#10;    where&#10;      @z z ∈ 1‥4&#10;      @z2 z &lt; bot_z ∨ z = bot_z + 1&#10;      @z3 z = level(bot_x↦bot_y−1)&#10;    then&#10;      @act_z bot_z ≔  z&#10;  end&#10;&#10;  event jump_down extends move_down&#10;    any z&#10;    where&#10;      @z z ∈ 1‥4&#10;      @z2 z &lt; bot_z ∨ z = bot_z + 1&#10;      @z3 z = level(bot_x↦bot_y+1)&#10;    then&#10;      @act_z bot_z ≔  z&#10;  end&#10;end&#10;" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="Mch1_Movement"/>
+<org.eventb.core.seesContext name="_k-PQUJpBEeS_6Ljkn4LD7g" org.eventb.core.target="Ctx2_Layer"/>
+<org.eventb.core.variable name="_GOKDwJpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_x"/>
+<org.eventb.core.variable name="_GOKq0JpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_y"/>
+<org.eventb.core.variable name="_GOKq0ZpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_direction"/>
+<org.eventb.core.variable name="_GOKq0ppAEeS_6Ljkn4LD7g" org.eventb.core.identifier="light_state"/>
+<org.eventb.core.event name="_GOKq0ppAEeS_6Ljkn4LD7h" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_7-jmwJpAEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_z ≔ start_z" org.eventb.core.label="z"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_GOKq0ppAEeS_6Ljkn4LD7i" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="move_right">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="move_right"/>
+<org.eventb.core.guard name="_mfUEsJpFEeS_6Ljkn4LD7g" org.eventb.core.label="z" org.eventb.core.predicate="bot_z = level(bot_x+1↦bot_y)"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_GOKq0ppAEeS_6Ljkn4LD7j" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="move_left">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="move_left"/>
+<org.eventb.core.guard name="_Ed5_YJpGEeS_6Ljkn4LD7g" org.eventb.core.label="z" org.eventb.core.predicate="bot_z = level(bot_x−1↦bot_y)"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_GOKq0ppAEeS_6Ljkn4LD7k" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="move_up">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="move_up"/>
+<org.eventb.core.guard name="_Ed6mcJpGEeS_6Ljkn4LD7g" org.eventb.core.label="z" org.eventb.core.predicate="bot_z = level(bot_x↦bot_y−1)"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_GOKq0ppAEeS_6Ljkn4LD7l" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="move_down">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="move_down"/>
+<org.eventb.core.guard name="_L52MgJpGEeS_6Ljkn4LD7g" org.eventb.core.label="z" org.eventb.core.predicate="bot_z = level(bot_x↦bot_y+1)"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_GOKq0ppAEeS_6Ljkn4LD7m" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="turn_right">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="turn_right"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_GOKq0ppAEeS_6Ljkn4LD7n" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="turn_left">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="turn_left"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_GOKq0ppAEeS_6Ljkn4LD7o" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="toggle_light">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="toggle_light"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_3cDr8JpAEeS_6Ljkn4LD7g" org.eventb.core.identifier="bot_z"/>
+<org.eventb.core.invariant name="_3cDr8ZpAEeS_6Ljkn4LD7g" org.eventb.core.label="z" org.eventb.core.predicate="bot_z ∈ 1‥4"/>
+<org.eventb.core.event name="_3cETAJpAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="jump_right">
+<org.eventb.core.refinesEvent name="_3cETAZpAEeS_6Ljkn4LD7g" org.eventb.core.target="move_right"/>
+<org.eventb.core.parameter name="_fawZoJpBEeS_6Ljkn4LD7g" org.eventb.core.identifier="z"/>
+<org.eventb.core.guard name="_fawZoZpBEeS_6Ljkn4LD7g" org.eventb.core.label="z" org.eventb.core.predicate="z ∈ 1‥4"/>
+<org.eventb.core.guard name="__kKmEJpBEeS_6Ljkn4LD7g" org.eventb.core.label="z2" org.eventb.core.predicate="z &lt; bot_z ∨ z = bot_z + 1"/>
+<org.eventb.core.guard name="__kKmEZpBEeS_6Ljkn4LD7g" org.eventb.core.label="z3" org.eventb.core.predicate="z = level(bot_x+1↦bot_y)"/>
+<org.eventb.core.action name="_fawZoppBEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_z ≔  z" org.eventb.core.label="act_z"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_3cE6EJpAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="jump_left">
+<org.eventb.core.refinesEvent name="_3cE6EZpAEeS_6Ljkn4LD7g" org.eventb.core.target="move_left"/>
+<org.eventb.core.parameter name="_G4Ii8JpCEeS_6Ljkn4LD7g" org.eventb.core.identifier="z"/>
+<org.eventb.core.guard name="_G4Ii8ZpCEeS_6Ljkn4LD7g" org.eventb.core.label="z" org.eventb.core.predicate="z ∈ 1‥4"/>
+<org.eventb.core.guard name="_G4Ii8ppCEeS_6Ljkn4LD7g" org.eventb.core.label="z2" org.eventb.core.predicate="z &lt; bot_z ∨ z = bot_z + 1"/>
+<org.eventb.core.guard name="_G4JKAJpCEeS_6Ljkn4LD7g" org.eventb.core.label="z3" org.eventb.core.predicate="z = level(bot_x−1↦bot_y)"/>
+<org.eventb.core.action name="_G4JKAZpCEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_z ≔  z" org.eventb.core.label="act_z"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_3cFhIJpAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="jump_up">
+<org.eventb.core.refinesEvent name="_3cFhIZpAEeS_6Ljkn4LD7g" org.eventb.core.target="move_up"/>
+<org.eventb.core.parameter name="_G4JKAppCEeS_6Ljkn4LD7g" org.eventb.core.identifier="z"/>
+<org.eventb.core.guard name="_G4JxEJpCEeS_6Ljkn4LD7g" org.eventb.core.label="z" org.eventb.core.predicate="z ∈ 1‥4"/>
+<org.eventb.core.guard name="_G4JxEZpCEeS_6Ljkn4LD7g" org.eventb.core.label="z2" org.eventb.core.predicate="z &lt; bot_z ∨ z = bot_z + 1"/>
+<org.eventb.core.guard name="_G4JxEppCEeS_6Ljkn4LD7g" org.eventb.core.label="z3" org.eventb.core.predicate="z = level(bot_x↦bot_y−1)"/>
+<org.eventb.core.action name="_G4JxE5pCEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_z ≔  z" org.eventb.core.label="act_z"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_3cFhIppAEeS_6Ljkn4LD7g" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="jump_down">
+<org.eventb.core.refinesEvent name="_3cGIMJpAEeS_6Ljkn4LD7g" org.eventb.core.target="move_down"/>
+<org.eventb.core.parameter name="_G4K_MJpCEeS_6Ljkn4LD7g" org.eventb.core.identifier="z"/>
+<org.eventb.core.guard name="_G4K_MZpCEeS_6Ljkn4LD7g" org.eventb.core.label="z" org.eventb.core.predicate="z ∈ 1‥4"/>
+<org.eventb.core.guard name="_G4K_MppCEeS_6Ljkn4LD7g" org.eventb.core.label="z2" org.eventb.core.predicate="z &lt; bot_z ∨ z = bot_z + 1"/>
+<org.eventb.core.guard name="_G4K_M5pCEeS_6Ljkn4LD7g" org.eventb.core.label="z3" org.eventb.core.predicate="z = level(bot_x↦bot_y+1)"/>
+<org.eventb.core.action name="_G4LmQJpCEeS_6Ljkn4LD7g" org.eventb.core.assignment="bot_z ≔  z" org.eventb.core.label="act_z"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

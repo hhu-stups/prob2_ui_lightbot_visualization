@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="set" org.eventb.core.type="ℙ(set)"/>
+<org.eventb.core.poIdentifier name="commands" org.eventb.core.type="ℙ(set)"/>
+<org.eventb.core.poIdentifier name="jump" org.eventb.core.type="set"/>
+<org.eventb.core.poIdentifier name="main" org.eventb.core.type="set"/>
+<org.eventb.core.poIdentifier name="max_stack_size" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="move" org.eventb.core.type="set"/>
+<org.eventb.core.poIdentifier name="null" org.eventb.core.type="set"/>
+<org.eventb.core.poIdentifier name="proc1" org.eventb.core.type="set"/>
+<org.eventb.core.poIdentifier name="proc2" org.eventb.core.type="set"/>
+<org.eventb.core.poIdentifier name="procs" org.eventb.core.type="ℙ(set)"/>
+<org.eventb.core.poIdentifier name="program_size" org.eventb.core.type="ℙ(set×ℤ)"/>
+<org.eventb.core.poIdentifier name="toggle_light" org.eventb.core.type="set"/>
+<org.eventb.core.poIdentifier name="turn_left" org.eventb.core.type="set"/>
+<org.eventb.core.poIdentifier name="turn_right" org.eventb.core.type="set"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/LightBot/Ctx3_Commands.bpo|org.eventb.core.poFile#Ctx3_Commands|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(set,{move},{turn_right},{turn_left},{toggle_light},{jump},{main},{proc1},{proc2},{null})" org.eventb.core.source="/LightBot/Ctx3_Commands.buc|org.eventb.core.contextFile#Ctx3_Commands|org.eventb.core.axiom#_OnzVoZpIEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="procs⊆{main,proc1,proc2}" org.eventb.core.source="/LightBot/Ctx3_Commands.buc|org.eventb.core.contextFile#Ctx3_Commands|org.eventb.core.axiom#_oThRoJpjEeSGj4od-DNE0w"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="main∈procs" org.eventb.core.source="/LightBot/Ctx3_Commands.buc|org.eventb.core.contextFile#Ctx3_Commands|org.eventb.core.axiom#_cT6OYJpKEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="commands=set ∖ {null,main}" org.eventb.core.source="/LightBot/Ctx3_Commands.buc|org.eventb.core.contextFile#Ctx3_Commands|org.eventb.core.axiom#_qwd-kJpKEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="program_size∈procs → 1 ‥ 12" org.eventb.core.source="/LightBot/Ctx3_Commands.buc|org.eventb.core.contextFile#Ctx3_Commands|org.eventb.core.axiom#_HgyIQZpLEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="procs=dom(program_size)" org.eventb.core.source="/LightBot/Ctx3_Commands.buc|org.eventb.core.contextFile#Ctx3_Commands|org.eventb.core.axiom#_ozLpIJpjEeSGj4od-DNE0w"/>
+<org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="max_stack_size∈ℕ1" org.eventb.core.source="/LightBot/Ctx3_Commands.buc|org.eventb.core.contextFile#Ctx3_Commands|org.eventb.core.axiom#_dk6GsJ2AEeSnU8TIoxEcvA"/>
+<org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="max_stack_size=10" org.eventb.core.source="/LightBot/Ctx3_Commands.buc|org.eventb.core.contextFile#Ctx3_Commands|org.eventb.core.axiom#_dk6GsZ2AEeSnU8TIoxEcvA"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

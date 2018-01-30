@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase;de.prob.units.mchBase" org.eventb.texttools.text_lastmodified="1452256834267" org.eventb.texttools.text_representation="context Ctx1_Field&#10;&#10;sets directions&#10;&#10;constants field u d l r turn_r lights main_queue_l start_x start_y start_direction&#10;&#10;axioms&#10;  @field field ⊆ 1‥10 × 1‥10&#10;  @directions partition(directions, {u}, {l}, {r}, {d})&#10;  @turn turn_r ∈ directions ⤖ directions&#10;  @turn2 turn_r= { u↦r, r↦d, d↦l, l↦u}&#10;  @lights lights ⊆ field&#10;  @main_queue_l main_queue_l ∈ℕ1&#10;  @main_queue_l2 main_queue_l = 12&#10;  @start_x start_x ∈ dom(field)&#10;  @start_y start_y ∈ ran(field)&#10;  @start start_x↦ start_y ∈ field&#10;  @start_direction start_direction ∈ directions&#10;end&#10;" version="3">
+<org.eventb.core.constant name="_Z6aNUX-kEeS6artAncuBVQ" org.eventb.core.identifier="field"/>
+<org.eventb.core.axiom name="_Z6a0YH-kEeS6artAncuBVQ" org.eventb.core.label="field" org.eventb.core.predicate="field ⊆ 1‥10 × 1‥10"/>
+<org.eventb.core.axiom name="_oGMWkX-kEeS6artAncuBVQ" org.eventb.core.label="directions" org.eventb.core.predicate="partition(directions, {up_direction}, {left_direction}, {right_direction}, {down_direction})"/>
+<org.eventb.core.axiom name="_m2NDcH-mEeS6artAncuBVQ" org.eventb.core.label="turn" org.eventb.core.predicate="turn_r ∈ directions ⤖ directions"/>
+<org.eventb.core.axiom name="_m2NDcX-mEeS6artAncuBVQ" org.eventb.core.label="turn2" org.eventb.core.predicate="turn_r= { up_direction↦right_direction, right_direction↦down_direction, down_direction↦left_direction, left_direction↦up_direction}"/>
+<org.eventb.core.axiom name="_ElDR8H-nEeS6artAncuBVQ" org.eventb.core.label="lights" org.eventb.core.predicate="lights ⊆ field"/>
+<org.eventb.core.carrierSet name="_hl3AoH-lEeS6artAncuBVQ" org.eventb.core.identifier="directions"/>
+<org.eventb.core.constant name="_hl3AoX-lEeS6artAncuBVQ" org.eventb.core.identifier="up_direction"/>
+<org.eventb.core.constant name="_hl3nsH-lEeS6artAncuBVQ" org.eventb.core.identifier="down_direction"/>
+<org.eventb.core.constant name="_hl3nsX-lEeS6artAncuBVQ" org.eventb.core.identifier="left_direction"/>
+<org.eventb.core.constant name="_hl3nsn-lEeS6artAncuBVQ" org.eventb.core.identifier="right_direction"/>
+<org.eventb.core.constant name="_m2McYH-mEeS6artAncuBVQ" org.eventb.core.identifier="turn_r"/>
+<org.eventb.core.constant name="_ElEgEH-nEeS6artAncuBVQ" org.eventb.core.identifier="lights"/>
+<org.eventb.core.axiom name="_x_3EMH_BEeS6artAncuBVQ" org.eventb.core.label="main_queue_l" org.eventb.core.predicate="main_queue_l ∈ℕ1"/>
+<org.eventb.core.axiom name="_fxVyMH-pEeS6artAncuBVQ" org.eventb.core.label="main_queue_l2" org.eventb.core.predicate="main_queue_l = 12"/>
+<org.eventb.core.constant name="_fxVyMX-pEeS6artAncuBVQ" org.eventb.core.identifier="main_queue_l"/>
+<org.eventb.core.axiom name="_jGuNsJpEEeS_6Ljkn4LD7g" org.eventb.core.label="start_x" org.eventb.core.predicate="start_x ∈ dom(field)"/>
+<org.eventb.core.axiom name="_muOf4JpEEeS_6Ljkn4LD7g" org.eventb.core.label="start_y" org.eventb.core.predicate="start_y ∈ ran(field)"/>
+<org.eventb.core.constant name="_p_mxEJpEEeS_6Ljkn4LD7g" org.eventb.core.identifier="start_x"/>
+<org.eventb.core.constant name="_p_mxEZpEEeS_6Ljkn4LD7g" org.eventb.core.identifier="start_y"/>
+<org.eventb.core.axiom name="_p_n_MJpEEeS_6Ljkn4LD7g" org.eventb.core.label="start" org.eventb.core.predicate="start_x↦ start_y ∈ field"/>
+<org.eventb.core.constant name="_G1m_IJpdEeS_6Ljkn4LD7g" org.eventb.core.identifier="start_direction"/>
+<org.eventb.core.axiom name="_G1m_IZpdEeS_6Ljkn4LD7g" org.eventb.core.label="start_direction" org.eventb.core.predicate="start_direction ∈ directions"/>
+</org.eventb.core.contextFile>

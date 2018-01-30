@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase;de.prob.units.mchBase" org.eventb.texttools.text_lastmodified="1421413579120" org.eventb.texttools.text_representation="context Ctx3_Commands&#10;&#10;constants move turn_right turn_left toggle_light jump null main proc1 proc2 procs commands program_size max_stack_size&#10;&#10;sets set&#10;&#10;axioms&#10;  @set partition(set, {move}, {turn_right}, {turn_left}, {toggle_light}, {jump}, {main}, {proc1}, {proc2}, {null})&#10;  @procs procs ⊆ {main, proc1, proc2}&#10;  @main main ∈ procs&#10;  @commands commands = set ∖ {null,main}&#10;  @program_size program_size ∈ procs → 1‥12&#10;  @procs22 procs = dom(program_size)&#10;  @stack_size max_stack_size ∈ ℕ1&#10;  @stack_size2 max_stack_size = 10&#10;end&#10;" version="3">
+<org.eventb.core.carrierSet name="_OnzVoJpIEeS_6Ljkn4LD7g" org.eventb.core.identifier="set"/>
+<org.eventb.core.axiom name="_OnzVoZpIEeS_6Ljkn4LD7g" org.eventb.core.label="set" org.eventb.core.predicate="partition(set, {move}, {turn_right}, {turn_left}, {toggle_light}, {jump}, {main}, {proc1}, {proc2}, {null})"/>
+<org.eventb.core.constant name="_WKx-4JpIEeS_6Ljkn4LD7g" org.eventb.core.identifier="move"/>
+<org.eventb.core.constant name="_WKx-4ZpIEeS_6Ljkn4LD7g" org.eventb.core.identifier="turn_right"/>
+<org.eventb.core.constant name="_WKx-4ppIEeS_6Ljkn4LD7g" org.eventb.core.identifier="turn_left"/>
+<org.eventb.core.constant name="_WKyl8JpIEeS_6Ljkn4LD7g" org.eventb.core.identifier="toggle_light"/>
+<org.eventb.core.constant name="_lZYL0JpPEeS_6Ljkn4LD7g" org.eventb.core.identifier="jump"/>
+<org.eventb.core.constant name="_WKyl8ZpIEeS_6Ljkn4LD7g" org.eventb.core.identifier="null"/>
+<org.eventb.core.constant name="_fCkpgJpJEeS_6Ljkn4LD7g" org.eventb.core.identifier="main"/>
+<org.eventb.core.constant name="_fCkpgZpJEeS_6Ljkn4LD7g" org.eventb.core.identifier="proc1"/>
+<org.eventb.core.constant name="_fClQkJpJEeS_6Ljkn4LD7g" org.eventb.core.identifier="proc2"/>
+<org.eventb.core.constant name="_KiT1AJpKEeS_6Ljkn4LD7g" org.eventb.core.identifier="procs"/>
+<org.eventb.core.axiom name="_oThRoJpjEeSGj4od-DNE0w" org.eventb.core.label="procs" org.eventb.core.predicate="procs ⊆ {main, proc1, proc2}"/>
+<org.eventb.core.axiom name="_cT6OYJpKEeS_6Ljkn4LD7g" org.eventb.core.label="main" org.eventb.core.predicate="main ∈ procs"/>
+<org.eventb.core.axiom name="_qwd-kJpKEeS_6Ljkn4LD7g" org.eventb.core.label="commands" org.eventb.core.predicate="commands = set ∖ {null,main}"/>
+<org.eventb.core.axiom name="_HgyIQZpLEeS_6Ljkn4LD7g" org.eventb.core.label="program_size" org.eventb.core.predicate="program_size ∈ procs → 1‥12"/>
+<org.eventb.core.constant name="_l8ocIJpKEeS_6Ljkn4LD7g" org.eventb.core.identifier="commands"/>
+<org.eventb.core.constant name="_yHQJcJpLEeS_6Ljkn4LD7g" org.eventb.core.identifier="program_size"/>
+<org.eventb.core.axiom name="_ozLpIJpjEeSGj4od-DNE0w" org.eventb.core.label="procs22" org.eventb.core.predicate="procs = dom(program_size)"/>
+<org.eventb.core.constant name="_Z9O1YJ2AEeSnU8TIoxEcvA" org.eventb.core.identifier="max_stack_size"/>
+<org.eventb.core.axiom name="_dk6GsJ2AEeSnU8TIoxEcvA" org.eventb.core.label="stack_size" org.eventb.core.predicate="max_stack_size ∈ ℕ1"/>
+<org.eventb.core.axiom name="_dk6GsZ2AEeSnU8TIoxEcvA" org.eventb.core.label="stack_size2" org.eventb.core.predicate="max_stack_size = 10"/>
+</org.eventb.core.contextFile>

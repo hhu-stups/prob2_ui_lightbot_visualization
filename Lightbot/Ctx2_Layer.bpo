@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="directions" org.eventb.core.type="ℙ(directions)"/>
+<org.eventb.core.poIdentifier name="down_direction" org.eventb.core.type="directions"/>
+<org.eventb.core.poIdentifier name="field" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="left_direction" org.eventb.core.type="directions"/>
+<org.eventb.core.poIdentifier name="lights" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="main_queue_l" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="right_direction" org.eventb.core.type="directions"/>
+<org.eventb.core.poIdentifier name="start_direction" org.eventb.core.type="directions"/>
+<org.eventb.core.poIdentifier name="start_x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="start_y" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="turn_r" org.eventb.core.type="ℙ(directions×directions)"/>
+<org.eventb.core.poIdentifier name="up_direction" org.eventb.core.type="directions"/>
+<org.eventb.core.poPredicate name="start_directioo" org.eventb.core.predicate="field⊆1 ‥ 10 × 1 ‥ 10" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_Z6a0YH-kEeS6artAncuBVQ"/>
+<org.eventb.core.poPredicate name="start_directiop" org.eventb.core.predicate="partition(directions,{up_direction},{left_direction},{right_direction},{down_direction})" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_oGMWkX-kEeS6artAncuBVQ"/>
+<org.eventb.core.poPredicate name="start_directioq" org.eventb.core.predicate="turn_r∈directions ⤖ directions" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_m2NDcH-mEeS6artAncuBVQ"/>
+<org.eventb.core.poPredicate name="start_directior" org.eventb.core.predicate="turn_r={up_direction ↦ right_direction,right_direction ↦ down_direction,down_direction ↦ left_direction,left_direction ↦ up_direction}" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_m2NDcX-mEeS6artAncuBVQ"/>
+<org.eventb.core.poPredicate name="start_directios" org.eventb.core.predicate="lights⊆field" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_ElDR8H-nEeS6artAncuBVQ"/>
+<org.eventb.core.poPredicate name="start_directiot" org.eventb.core.predicate="main_queue_l∈ℕ1" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_x_3EMH_BEeS6artAncuBVQ"/>
+<org.eventb.core.poPredicate name="start_directiou" org.eventb.core.predicate="main_queue_l=12" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_fxVyMH-pEeS6artAncuBVQ"/>
+<org.eventb.core.poPredicate name="start_directiov" org.eventb.core.predicate="start_x∈dom(field)" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_jGuNsJpEEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poPredicate name="start_directiow" org.eventb.core.predicate="start_y∈ran(field)" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_muOf4JpEEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poPredicate name="start_directiox" org.eventb.core.predicate="start_x ↦ start_y∈field" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_p_n_MJpEEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poPredicate name="start_directioy" org.eventb.core.predicate="start_direction∈directions" org.eventb.core.source="/LightBot/Ctx1_Field.buc|org.eventb.core.contextFile#Ctx1_Field|org.eventb.core.axiom#_G1m_IZpdEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poIdentifier name="level" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="start_z" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="start_z2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/LightBot/Ctx2_Layer.bpo|org.eventb.core.poFile#Ctx2_Layer|org.eventb.core.poPredicateSet#HYPCtx1_Fielf"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="start_x ↦ start_y∈dom(level)∧level∈ℤ × ℤ ⇸ ℤ" org.eventb.core.source="/LightBot/Ctx2_Layer.buc|org.eventb.core.contextFile#Ctx2_Layer|org.eventb.core.axiom#_-20QgJpEEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/LightBot/Ctx2_Layer.buc|org.eventb.core.contextFile#Ctx2_Layer|org.eventb.core.axiom#_-20QgJpEEeS_6Ljkn4LD7g"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/LightBot/Ctx2_Layer.bpo|org.eventb.core.poFile#Ctx2_Layer|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/LightBot/Ctx2_Layer.bpo|org.eventb.core.poFile#Ctx2_Layer|org.eventb.core.poPredicateSet#HYPCtx1_Fielf"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="HYPCtx1_Fielf" org.eventb.core.parentSet="/LightBot/Ctx2_Layer.bpo|org.eventb.core.poFile#Ctx2_Layer|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="level∈field → 1 ‥ 4" org.eventb.core.source="/LightBot/Ctx2_Layer.buc|org.eventb.core.contextFile#Ctx2_Layer|org.eventb.core.axiom#_q39ign_DEeS6artAncuBVQ"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="start_z∈ran(level)" org.eventb.core.source="/LightBot/Ctx2_Layer.buc|org.eventb.core.contextFile#Ctx2_Layer|org.eventb.core.axiom#_4BeJUJpEEeS_6Ljkn4LD7g"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/LightBot/Ctx2_Layer.bpo|org.eventb.core.poFile#Ctx2_Layer|org.eventb.core.poPredicateSet#HYPCtx1_Fielf" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="start_z=level(start_x ↦ start_y)" org.eventb.core.source="/LightBot/Ctx2_Layer.buc|org.eventb.core.contextFile#Ctx2_Layer|org.eventb.core.axiom#_-20QgJpEEeS_6Ljkn4LD7g"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>
